@@ -1,7 +1,6 @@
 package app;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -15,7 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 /**
  * Servlet implementation class ListServlet
@@ -78,12 +77,6 @@ public class ListServlet extends HttpServlet {
 						 list.add(task);
 						}
 
-
-					// アクセスした人答するためのJSONを用意する
-					PrintWriter pw = response.getWriter();
-		            //
-					//// JSONで出力
-					pw.append(new ObjectMapper().writeValueAsString(list));
 				} catch (Exception e) {
 					throw new RuntimeException(String.format("検索処理の実施中にエラーが発生しました。詳細：[%s]", e.getMessage()), e);
 			}

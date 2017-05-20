@@ -1,1 +1,7 @@
+<<<<<<< HEAD
+=======
+/log4jdbc.properties
+/logback.xml
+/supportkit/
+>>>>>>> origin/features/list
 /app/
