@@ -56,13 +56,25 @@ public class ListServlet extends HttpServlet {
 						Statement stmt = con.createStatement();
 
 					    ResultSet rs = stmt.executeQuery(
-					    	" "
+					    	" select T.TITLE, T.DESCRIPTION, T.SUBMIT, K.KBN_VALUE STATUS, T.LIMIT_YMD, T.REGISTER_YMD, T.UPDATE_YMD, T.COMPLETE_YMD, T.DELETE_YMD, T.REGISTER_ID, T.WORKER_ID " //register, workerは名前で表示したい
+					    	+ " from TR_TASK T, MS_KBN K"
+					    	+ " where 1=1 and T.ID = "+id+" and K.KBN_CD = '1' and K.KBN = T.STATUS_KBN"
 					    );) {
 
 					List<Task> list = new ArrayList<>();
 					 while(rs.next()) {
 						Task task = new Task();
-						//task.set~~(rs.getString("~~"))
+						task.setId(id);
+						task.setTitle(rs.getString("title"));
+						task.setDescription(rs.getString("description"));
+						task.setSubmit(rs.getString("submit"));
+						task.setStatus(rs.getString("status"));
+						task.setLimitYMD(rs.getString("limit_YMD"));
+						task.setRegisterYMD(rs.getString("register_YMD"));
+						task.setCompleteYMD(rs.getString("complete_ymd"));
+						task.setDeleteYMD(rs.getString("delete_ymd"));
+						task.setRegister(rs.getString("register_id"));
+						task.setWorker(rs.getString("worker_id"));
 						 list.add(task);
 						}
 
