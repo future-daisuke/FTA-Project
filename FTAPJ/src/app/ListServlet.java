@@ -41,8 +41,8 @@ public class ListServlet extends HttpServlet {
 
 				// データベースにアクセスするために、データベースのURLとユーザ名とパスワードを指定します
 				String url = "jdbc:log4jdbc:oracle:thin:@localhost:1521:XE";
-				String user= "";
-				String pass= "";
+				String user= "fta";
+				String pass= "fta";
 				// SQLの命令文行するための準備をおこないます
 
 				try (
@@ -86,6 +86,7 @@ public class ListServlet extends HttpServlet {
 			//			 * を使ってください
 			//			 */
 
+
 					 // JSPへ転送用するため、リクエストパラメータに追加します
 						request.setAttribute("list", list);
 
@@ -112,8 +113,8 @@ public class ListServlet extends HttpServlet {
 
 		// データベースにアクセスするために、データベースのURLとユーザ名とパスワードを指定します
 				String url = "jdbc:log4jdbc:oracle:thin:@localhost:1521:XE";
-				String user= "TeamI";
-				String pass= "TeamI";
+				String user= "fta";
+				String pass= "fta";
 				// SQLの命令文行するための準備をおこないます
 
 				try (

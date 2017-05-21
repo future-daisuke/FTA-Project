@@ -31,7 +31,7 @@ var d  = dt.getDate();
 				submit : submit,
 				limit : limit
 				};
-
+		console.dir(requestQuery);
 		$.ajax({
 
 
@@ -40,15 +40,13 @@ var d  = dt.getDate();
 			dataType : 'json',
 			data : requestQuery,
 			success : function(json) {
-				//取得した値をサーブレットに渡す
+				console.dir(json);
+				//取得した値を表示
 				console.log('post is success');
 				//成功したらリストページに遷移する
-				document.location.href = "index.jsp";
-			 },
-             error: function(XMLHttpRequest, textStatus, errorThrown) {
-                          alert("error");
-                          console.log('error');
-             }
+				document.location.href = "/FTAPJ/index.jsp";
+			 }
+
 		});
 	}
 
