@@ -91,7 +91,7 @@ public class ListServlet extends HttpServlet {
 						request.setAttribute("list", list);
 
 						// JSPへの遷移先を設定
-						RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/index.jsp");
+						RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/list.jsp");
 
 						// JSPページを処理をフォワード
 						dispatcher.forward(request, response);
