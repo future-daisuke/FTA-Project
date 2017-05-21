@@ -1,0 +1,4 @@
+91\Create.cmdをダブルクリックするとスキーマが構築されます
+
+user:fta
+paas:fta

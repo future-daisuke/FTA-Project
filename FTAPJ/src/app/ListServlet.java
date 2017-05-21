@@ -1,21 +1,22 @@
 package app;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 /**
  * Servlet implementation class ListServlet
@@ -36,16 +37,12 @@ public class ListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 
-		// ブラウザから送信されたリクエストから社員番号とパスワードの情報を取得
-				String id = request.getParameter("id");
 
 				// データベースにアクセスするために、データベースのURLとユーザ名とパスワードを指定します
 				String url = "jdbc:log4jdbc:oracle:thin:@localhost:1521:XE";
-				String user= "";
-				String pass= "";
+				String user= "fta";
+				String pass= "fta";
 				// SQLの命令文行するための準備をおこないます
 
 				try (
@@ -56,15 +53,16 @@ public class ListServlet extends HttpServlet {
 						Statement stmt = con.createStatement();
 
 					    ResultSet rs = stmt.executeQuery(
-					    	" select T.TITLE, T.DESCRIPTION, T.SUBMIT, K.KBN_VALUE STATUS, T.LIMIT_YMD, T.REGISTER_YMD, T.UPDATE_YMD, T.COMPLETE_YMD, T.DELETE_YMD, T.REGISTER_ID, T.WORKER_ID " //register, workerは名前で表示したい
+					    	" select T.ID, T.TITLE, T.DESCRIPTION, T.SUBMIT, K.KBN_VALUE STATUS, T.LIMIT_YMD, T.REGISTER_YMD, T.UPDATE_YMD, T.COMPLETE_YMD, T.DELETE_YMD, T.REGISTER_ID, T.WORKER_ID " //register, workerは名前で表示したい
 					    	+ " from TR_TASK T, MS_KBN K"
-					    	+ " where 1=1 and T.ID = "+id+" and K.KBN_CD = '1' and K.KBN = T.STATUS_KBN"
+					    	+ " where 1=1 and K.KBN_CD = '1' and K.KBN = T.STATUS_KBN"
+					    	+ "order by T.limit_ymd"
 					    );) {
 
 					List<Task> list = new ArrayList<>();
 					 while(rs.next()) {
 						Task task = new Task();
-						task.setId(id);
+						task.setId(rs.getString("id"));
 						task.setTitle(rs.getString("title"));
 						task.setDescription(rs.getString("description"));
 						task.setSubmit(rs.getString("submit"));
@@ -78,24 +76,66 @@ public class ListServlet extends HttpServlet {
 						 list.add(task);
 						}
 
+			//		//sessionにtaskListをセット
+			//			HttpSession session = request.getSession(true);
+			//			session.setAttribute("taskList", list);
+			//			/*
+			//			 * 別画面で呼び出す場合は、
+			//			 * HttpSession session = request.getSession(true);
+			//			 * session.getAttribute("taskList");
+			//			 * を使ってください
+			//			 */
 
-					// アクセスした人答するためのJSONを用意する
-					PrintWriter pw = response.getWriter();
-		            //
-					//// JSONで出力
-					pw.append(new ObjectMapper().writeValueAsString(list));
+
+					 // JSPへ転送用するため、リクエストパラメータに追加します
+						request.setAttribute("list", list);
+
+						// JSPへの遷移先を設定
+						RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/index.jsp");
+
+						// JSPページを処理をフォワード
+						dispatcher.forward(request, response);
+
+
+
 				} catch (Exception e) {
 					throw new RuntimeException(String.format("検索処理の実施中にエラーが発生しました。詳細：[%s]", e.getMessage()), e);
 			}
 
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	//タスク完了のupdate
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+
+		//完了を押されたタスクのidを取得
+		String id = request.getParameter("id");
+
+
+		// データベースにアクセスするために、データベースのURLとユーザ名とパスワードを指定します
+				String url = "jdbc:log4jdbc:oracle:thin:@localhost:1521:XE";
+				String user= "fta";
+				String pass= "fta";
+				// SQLの命令文行するための準備をおこないます
+
+				try (
+
+						// 接続文字列は jdbc:postgresql://[ホスト名]:[ポート番号]/[データベース名]
+						Connection con = DriverManager.getConnection(url, user, pass);
+
+
+				        PreparedStatement pstmt = con.prepareStatement("update TR_TASK"+
+					    			" set STATUS_KBN = 1 "+
+					    			" where id = ?"); ){
+
+				        pstmt.setString(1, id);
+
+				        pstmt.executeUpdate();
+						con.commit();
+
+				} catch (Exception e) {
+					throw new RuntimeException(String.format("検索処理の実施中にエラーが発生しました。詳細：[%s]", e.getMessage()), e);
+				}
+
 	}
 
 }

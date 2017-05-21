@@ -1,0 +1,24 @@
+create table TR_TASK(
+	id	NUMBER(8,0) not null primary key
+,	title	VARCHAR(64char) not null
+,	description	VARCHAR(3000char) 
+,	submit	VARCHAR(64char) 
+,	status_kbn	CHAR(4char) default '1' not null 
+,	limit_ymd	DATE	not null
+,	register_ymd	DATE
+,	update_ymd DATE
+,	complete_ymd DATE
+,	delete_ymd DATE
+,	register_id	NUMBER(8,0)
+,	worker_id	NUMBER(8,0)
+);
+
+create table MS_KBN(
+	kbn_cd	CHAR(2char) not null
+,	kbn	CHAR(2char) not null
+,	kbn_value	VARCHAR(10char) not null
+);
+
+insert into MS_KBN values ('1', '1', 'ñ¢äÆóπ');
+insert into MS_KBN values ('1', '2', 'äÆóπ');
+insert into MS_KBN values ('1', '3', 'çÌèú');
