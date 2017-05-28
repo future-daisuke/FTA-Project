@@ -7,26 +7,25 @@ function executeAjax() {
 	'use strict';
 
 	// クエリパラメータからタスクIDを取得
-	/*  //クエリ送信してないのでコメントアウトしている
+	//クエリ送信してないのでコメントアウトしている
 	var arg = new Object;
 	var pair = location.search.substring(1).split('&');
-	var kv = pair[i].split('=');
+	var kv = pair[0].split('=');
 	arg[kv[0]] = kv[1];
-	*/
 	// key「id」：value「1」等
 	console.dir(arg);
 
 	$.ajax({
 
 		type : 'GET',
-		url : '/FTAPJ/api/UpadateServlet',
+		url : '/FTAPJ/api/UpdateServlet',
 		dataType : 'json',
 		data : arg,
 		success : function(json) {
 			// 取得した値を表示
 			console.dir(json);
 
-			$('#updateTable').append(+
+			$('#updateTable').append(
 					'<tr><th>ToDoタイトル</th><td><input id="title" type="text" name="title" value="'+json.title+'" required></td>>/tr>'+
 					'<tr><th>詳細</td><td><input id="description" type="text" name="description" value="'+json.description+'"></td></tr>'+
 					'<tr><th>提出先</td><td><input id="submit" type="text" name="submit" value="'+json.submit+'"></td></tr>'+
@@ -47,11 +46,10 @@ function updateAjax() {
 	var des = document.getElementById('description').value;
 	var submit = document.getElementById('submit').value;
 	var limit = document.getElementById('limit').value;
-	/*  //クエリ送信してないのでコメントアウトしている
+	//クエリ送信してないのでコメントアウトしている
 	var arg = new Object;
 	var pair = location.search.substring(1).split('&');
-	var kv = pair[i].split('=');
-	*/
+	var kv = pair[0].split('=');
 	// 取得したか確認
 	console.log(title);
 	console.log(des);
@@ -62,8 +60,8 @@ function updateAjax() {
 		title : title,
 		description : des,
 		submit : submit,
-		limit : limit
-		// id : kv[1]
+		limit : limit,
+		id : kv[1]
 	};
 	console.dir(requestQuery);
 	$.ajax({
