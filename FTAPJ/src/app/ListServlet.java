@@ -43,7 +43,7 @@ public class ListServlet extends HttpServlet {
 
 		System.out.println("listServletが呼ばれました");
 				// データベースにアクセスするために、データベースのURLとユーザ名とパスワードを指定します
-				String url = "jdbc:log4jdbc:oracle:thin:@localhost:1521:XE";
+				String url = "jdbc:log4jdbc:oracle:thin:@localhost:1521/XE";
 				String user= "fta";
 				String pass= "fta";
 				// SQLの命令文行するための準備をおこないます
@@ -62,7 +62,11 @@ public class ListServlet extends HttpServlet {
 					    	+ " order by T.limit_ymd"
 					    );) {
 
+					System.out.println(rs);
+
 					List<Task> list = new ArrayList<>();
+
+
 					 while(rs.next()) {
 						Task task = new Task();
 						task.setId(rs.getString("id"));
@@ -76,7 +80,8 @@ public class ListServlet extends HttpServlet {
 						task.setDeleteYMD(rs.getString("delete_ymd"));
 						task.setRegister(rs.getString("register_id"));
 						task.setWorker(rs.getString("worker_id"));
-						 list.add(task);
+						System.out.println("taskを表示します"+task.getId());
+						list.add(task);
 						}
 
 
