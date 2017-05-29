@@ -4,9 +4,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <title>タスクリスト</title>
 </head>
 <body>
-<p>リストに遷移しましたよ</p>
+<div class="container">
+	<div class="row">
+		<div class="new_create_btn">
+			<input type="button" value="新規作成" onClick="location.href='/FTAPJ/create.html'">
+		</div>
+		<div class="contents_area">
+			<jsp:include page="card.jsp" />
+		</div>
+	</div>
+</div>
 </body>
 </html>

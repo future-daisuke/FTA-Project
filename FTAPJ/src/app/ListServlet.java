@@ -15,19 +15,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import model.Task;
 
 
 /**
  * Servlet implementation class ListServlet
  */
-@WebServlet("/ListServlet")
+@WebServlet(name = "listServlet", urlPatterns = { "/index.html" })
 public class ListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
+
     public ListServlet() {
         super();
         // TODO Auto-generated constructor stub
@@ -38,9 +41,9 @@ public class ListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
+		System.out.println("listServletが呼ばれました");
 				// データベースにアクセスするために、データベースのURLとユーザ名とパスワードを指定します
-				String url = "jdbc:log4jdbc:oracle:thin:@localhost:1521:XE";
+				String url = "jdbc:log4jdbc:oracle:thin:@localhost:1521/XE";
 				String user= "fta";
 				String pass= "fta";
 				// SQLの命令文行するための準備をおこないます
@@ -56,10 +59,14 @@ public class ListServlet extends HttpServlet {
 					    	" select T.ID, T.TITLE, T.DESCRIPTION, T.SUBMIT, K.KBN_VALUE STATUS, T.LIMIT_YMD, T.REGISTER_YMD, T.UPDATE_YMD, T.COMPLETE_YMD, T.DELETE_YMD, T.REGISTER_ID, T.WORKER_ID " //register, workerは名前で表示したい
 					    	+ " from TR_TASK T, MS_KBN K"
 					    	+ " where 1=1 and K.KBN_CD = '1' and K.KBN = T.STATUS_KBN"
-					    	+ "order by T.limit_ymd"
+					    	+ " order by T.limit_ymd"
 					    );) {
 
+					System.out.println(rs);
+
 					List<Task> list = new ArrayList<>();
+
+
 					 while(rs.next()) {
 						Task task = new Task();
 						task.setId(rs.getString("id"));
@@ -73,25 +80,30 @@ public class ListServlet extends HttpServlet {
 						task.setDeleteYMD(rs.getString("delete_ymd"));
 						task.setRegister(rs.getString("register_id"));
 						task.setWorker(rs.getString("worker_id"));
-						 list.add(task);
+						System.out.println("taskを表示します"+task.getId());
+						list.add(task);
 						}
 
+
+					 System.out.println("listの中身を表示します"+list);
+
 			//		//sessionにtaskListをセット
-			//			HttpSession session = request.getSession(true);
-			//			session.setAttribute("taskList", list);
+						HttpSession session = request.getSession(true);
+						session.setAttribute("taskList", list);
 			//			/*
 			//			 * 別画面で呼び出す場合は、
-			//			 * HttpSession session = request.getSession(true);
-			//			 * session.getAttribute("taskList");
-			//			 * を使ってください
+			//			 * model.TaskとArrayListをimportしてから下記で呼び出せます
+			//			 * List<Task> taskContents = (List<Task>)session.getAttribute("taskList");
 			//			 */
+
+
 
 
 					 // JSPへ転送用するため、リクエストパラメータに追加します
 						request.setAttribute("list", list);
 
 						// JSPへの遷移先を設定
-						RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/index.jsp");
+						RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 
 						// JSPページを処理をフォワード
 						dispatcher.forward(request, response);

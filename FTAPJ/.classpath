@@ -14,5 +14,7 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="output" path="build/classes"/>
+	<classpathentry kind="lib" path="C:/Education/jdk1.8.0_102/lib/tools.jar"/>
+	<classpathentry exported="true" kind="lib" path="build"/>
+	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
 </classpath>
