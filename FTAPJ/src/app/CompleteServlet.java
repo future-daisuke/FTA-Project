@@ -1,5 +1,6 @@
 package app;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,6 +13,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @WebServlet("/api/CompleteServlet")
 public class CompleteServlet extends HttpServlet{
@@ -27,9 +30,9 @@ public class CompleteServlet extends HttpServlet{
 //		session.setAttribute("comId", taskId);
 		String sql;
 		if(st == 2){
-			sql = "update TR_TASK set status_kbn = '1' ,delete_ymd = "+  date +" where ID = '"+ taskId +"'";
+			sql = "update TR_TASK set status_kbn = '1' ,complete_ymd = "+  date +" where ID = '"+ taskId +"'";
 		}else{
-			sql = "update TR_TASK set status_kbn = '2' ,delete_ymd = "+  date +" where ID = '"+ taskId +"'";
+			sql = "update TR_TASK set status_kbn = '2' ,complete_ymd = "+  date +" where ID = '"+ taskId +"'";
 		}
 		try(
 			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "fta", "fta");
@@ -42,6 +45,9 @@ public class CompleteServlet extends HttpServlet{
 			PrintWriter w = response.getWriter();
 			w.write(new ObjectMapper().writeValueAsString("success"));
 		} catch (SQLException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		} catch (IOException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}

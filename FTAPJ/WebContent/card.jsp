@@ -44,7 +44,7 @@
 	</div>
 
 	<div class="list_submission">
-		<p>提出先：task.getSubmit()</p>
+		<p>提出先：<%= task.getSubmit()%></p>
 	</div>
 
 	<div class="work_time">
@@ -82,7 +82,7 @@
 		</div>
 
 		<div class="list_submission">
-			<p>提出先：task.getSubmit()</p>
+			<p>提出先：<%= task.getSubmit()%></p>
 		</div>
 
 		<div class="work_time">
@@ -93,7 +93,9 @@
 			<p>見積時間 60分</p>
 		</div>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer" id="footer">
+      <div id="task_id_${task.getId()}" class="${task.getStatus()}" >
+      </div>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Send message</button>
       </div>
@@ -103,7 +105,5 @@
      <!-- モーダル部分終了  -->
 <% } %>
 </div>
-
-
 </body>
 </html>

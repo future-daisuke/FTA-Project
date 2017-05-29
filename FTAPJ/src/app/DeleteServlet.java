@@ -1,5 +1,6 @@
 package app;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,6 +13,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @WebServlet("/api/DeleteServlet")
 public class DeleteServlet extends HttpServlet{
@@ -42,6 +45,9 @@ public class DeleteServlet extends HttpServlet{
 			PrintWriter w = response.getWriter();
 			w.write(new ObjectMapper().writeValueAsString("success"));
 		} catch (SQLException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		} catch (IOException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}

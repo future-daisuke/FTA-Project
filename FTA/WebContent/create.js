@@ -42,9 +42,9 @@ var d  = dt.getDate();
 				console.log('post is success');
 				//成功したらリストページに遷移する
 				//document.location.href = "index.html";
-			 },
-             error: function(XMLHttpRequest, textStatus, errorThrown) {
-                          alert("error");
+	//		 },
+     //        error: function(XMLHttpRequest, textStatus, errorThrown) {
+      //                    alert("error");
              }
 		});
 	}
