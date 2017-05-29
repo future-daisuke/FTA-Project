@@ -55,18 +55,13 @@
 		<p>見積時間 60分</p>
 	</div>
 
-	<div class="to_detail_link">
-	<p>>>詳細>></p>
-	</div>
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="${task.getId()}">
-     Launch demo modal
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal_${task.getId()}" data-whatever="${task.getId()}">
+     タスク詳細
      </button>
      </div>
-<% } %>
-</div>
 
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <!-- モーダル部分 -->
+     <div class="modal fade" id="exampleModal_${task.getId()}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -74,16 +69,29 @@
         <h4 class="modal-title" id="exampleModalLabel">New message</h4>
       </div>
       <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="recipient-name" class="control-label">Recipient:</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
-          <div class="form-group">
-            <label for="message-text" class="control-label">Message:</label>
-            <textarea class="form-control" id="message-text"></textarea>
-          </div>
-        </form>
+        <div class="list_title">
+			<p><%= task.getTitle() %></p>
+		</div>
+
+		<div class="list_limit">
+			<p>期限: <%= task.getLimitYMD() %></p>
+		</div>
+
+		<div class="list_description">
+			<p><%= task.getDescription() %></p>
+		</div>
+
+		<div class="list_submission">
+			<p>提出先：task.getSubmit()</p>
+		</div>
+
+		<div class="work_time">
+			<p>作業時間： 10分</p>
+		</div>
+
+		<div class="estimate_time">
+			<p>見積時間 60分</p>
+		</div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -92,6 +100,10 @@
     </div>
   </div>
 </div>
+     <!-- モーダル部分終了  -->
+<% } %>
+</div>
+
 
 </body>
 </html>
