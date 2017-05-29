@@ -94,10 +94,11 @@
 		</div>
       </div>
       <div class="modal-footer" id="footer">
-      <div id="task_id_${task.getId()}" class="${task.getStatus()}" >
-      </div>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
+     		<div id="task_id_${task.getId()}" class="${task.getStatus()}" >
+      		</div>
+      		<input type="button" value="編集" onClick="location.href='/FTAPJ/update.html?ID=${task.getId()}'">
+        	<!--  button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        	<button type="button" class="btn btn-primary">Send message</button> -->
       </div>
     </div>
   </div>
