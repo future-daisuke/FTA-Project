@@ -58,7 +58,18 @@
 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="${task.getId()}">
      タスク詳細
      </button>
-     </div>
+     <% String status = task.getStatus(); %>
+     <% System.out.println(status); %>
+     <%if(status.equals("完了")){ %>
+     <button type="button" id="com_${task.getId()}" class="btn btn-primary"  value="${task.getId()}" onClick="comC(${task.getId()})" >完了解除</button>
+	 <%}else{ %>
+	<button type="button" id="com_${task.getId()}" class="btn btn-primary"  value="${task.getId()}" onClick="comC(${task.getId()})" >完了</button>
+	<%} %>
+		<div>
+     		<input type="hidden" id="btn_com_id" value="${task.getId()}" >
+     		<input type="hidden" id="btn_${task.getId()}" value="${task.getStatus()}">
+     	</div>
+ </div>
 
      <!-- モーダル部分 -->
      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
