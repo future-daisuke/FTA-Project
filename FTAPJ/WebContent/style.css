@@ -2,17 +2,35 @@
 
 /****** card.jsp */
 
+.create_task_btn{
+	float:right;
+	margin:20px 20px;
 
+}
 
+.complet_btn_modal{
+	width:45%
+}
 
+.delete_btn_modal{
+	width:45%
+}
 
-/****** card.jsp */
+.edit_btn{
+	margin-top:10px;
+	width:98%;
+}
 
 .list_card{
 	margin-bottom:25px;
 }
 
+.clear{
+	clear:both;
+}
+
 .list_content{
+	background-color:white;
 	padding:12px;
 	margin:0px 0px 3px 3px;
 	border: 1px solid #eee;
@@ -25,6 +43,13 @@
 }
 
 
+/****** card.jsp */
+
+/****** index.jsp */
+.main_contents{
+	background-color:#ECEFF1;
+}
+/****** index.jsp */
 
 
 
@@ -165,7 +190,7 @@
     /* 文字表示 */
 	text-align: center;
     /* 背景色 */
-	background: #000; /* Old browsers */
+	background: #FFFFFF; /* Old browsers */
 }
 
 }

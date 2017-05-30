@@ -75,7 +75,6 @@
     		<div class="modal-content">
       		<div class="modal-header">
         		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        	<h4 class="modal-title" id="exampleModalLabel">New message</h4>
       	</div>
       		<div class="modal-body">
         		<div class="list_title">
@@ -102,14 +101,14 @@
 					<p>見積時間 60分</p>
 				</div>
 
-      </div>
-      <div class="modal-footer" id="footer">
-      		<div id="footBtn">
-      		</div>
-     		<input type="hidden" id="task_status_${task.getId()}" name="task_status_${task.getId()}" value="${task.getStatus()}" >
-      		<input type="button" value="編集" onClick="location.href='/FTAPJ/update.html?ID=${task.getId()}'">
-        	<!--  button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        	<button type="button" class="btn btn-primary">Send message</button> -->
+     		 </div>
+   		   <div class="modal-footer" id="footer">
+      			<div id="footBtn">
+      			</div>
+     			<input type="hidden" id="task_status_${task.getId()}" name="task_status_${task.getId()}" value="${task.getStatus()}" >
+      			<input type="button" class="edit_btn mdl-button mdl-js-button mdl-button--raised mdl-button--colored" value="編集" onClick="location.href='/FTAPJ/update.html?ID=${task.getId()}'">
+        		<!--  button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        		<button type="button" class="btn btn-primary">Send message</button> -->
       </div>
     </div>
   </div>

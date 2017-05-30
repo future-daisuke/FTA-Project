@@ -41,7 +41,7 @@ public class UpdateServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		// タスクID受け取り。リクエスト送信ver.
-		String id = request.getParameter("id");
+		String id = request.getParameter("ID");
 
 		// DB接続準備
 		String url = "jdbc:oracle:thin:@localhost:1521:XE";

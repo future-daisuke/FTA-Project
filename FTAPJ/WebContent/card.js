@@ -25,7 +25,7 @@ $(document).ready(function() {
 	    	  console.log(status);
 
 	    	  var modal = $(this)  //モーダルを取得
-	    	  modal.find('.modal-title').text('New message to ' + recipient) //モーダルのタイトルに値を表示
+
 	    	  modal.find('.modal-body input#recipient-name').val(recipient) //inputタグにも表示
 
 	    	  //Ajaxの処理はここから
@@ -33,22 +33,22 @@ $(document).ready(function() {
 	    	  if(status == '未完了'){
 	    		  $('#footBtn').empty();
 	    		  $('#footBtn').append(
-	    				  '<button type="button" id="com" value="'+ recipient +'" onClick="comChange();">完了</button>'+
-	    				  '<button type="button" id="del" value="'+  recipient +'" onClick="delChange();">削除</button>'
+	    				  '<button type="button" id="com"  class="complete_btn_modal mdl-button mdl-js-button mdl-button--raised mdl-button--accent" value="'+ recipient +'" onClick="comChange();">完了</button>'+
+	    				  '<button type="button" id="del" class="delete_btn_modal mdl-button mdl-js-button mdl-button--raised mdl-button--accent" value="'+  recipient +'" onClick="delChange();">削除</button>'
 	    		  );
 	    		  console.log('未完了の人はこっち！');
 	    	  }else if(status == '完了'){
 	    		  $('#footBtn').empty();
 	    		  $('#footBtn').append(
-	    				  '<button type="button" id="com" value="'+  recipient +'" onClick="comChange();">完了解除</button>'+
-	    				  '<button type="button" id="del" value="'+ recipient +'" onClick="delChange();">削除</button>'
+	    				  '<button type="button" class="complete_btn_modal  mdl-button mdl-js-button mdl-button--raised mdl-button--accent" id="com" value="'+  recipient +'" onClick="comChange();">完了解除</button>'+
+	    				  '<button type="button" class="complete_btn_modal  mdl-button mdl-js-button mdl-button--raised mdl-button--accent" id="del" value="'+ recipient +'" onClick="delChange();">削除</button>'
 	    		  );
 	    		  console.log('完了の人はこっち！');
 	    	  }else if(status == '削除'){
 	    		  $('#footBtn').empty();
 	    		  $('#footBtn').append(
-	    				  '<button type="button" id="com" value="'+  recipient +'" onClick="comChange();">完了解除</button>'+
-	    				  '<button type="button" id="del" value="'+ recipient +'" onClick="delChange();">削除解除</button>'
+	    				  '<button type="button" class="delete_btn_modal  mdl-button mdl-js-button mdl-button--raised mdl-button--accent" id="com" value="'+  recipient +'" onClick="comChange();">完了解除</button>'+
+	    				  '<button type="button" class="delete_btn_modal  mdl-button mdl-js-button mdl-button--raised mdl-button--accent" id="del" value="'+ recipient +'" onClick="delChange();">削除解除</button>'
 	    		  );
 	    		  console.log('未完了の人はこっち！');
 	    	  }
