@@ -63,28 +63,24 @@
 				<p>見積時間 60分</p>
 			</div>
 
-			<button type="button" class="btn detail_btn mdl-button mdl-js-button mdl-button--raised mdl-button--colored" data-toggle="modal" data-target="#exampleModal_${task.getId()}" data-whatever="${task.getId()}">
-		     タスク詳細
-		     </button>
-		  </div>
-		</div>
-
-
-
-
+			<button type="button" class="btn detail_btn mdl-button mdl-js-button mdl-button--raised mdl-button--colored" data-toggle="modal" data-target="#exampleModal" data-whatever="${task.getId()}">
+    		 タスク詳細
+     		</button>
+     		</div>
+     	</div>
 
      <!-- モーダル部分 -->
-     <div class="modal fade" id="exampleModal_${task.getId()}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   		<div class="modal-dialog">
-  		  <div class="modal-content">
- 		     <div class="modal-header">
- 	         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
- 	         <h4 class="modal-title" id="exampleModalLabel">New message</h4>
-           </div>
-           <div class="modal-body">
-               <div class="list_title">
-			     <p><%= task.getTitle() %></p>
-		       </div>
+    		<div class="modal-content">
+      		<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        	<h4 class="modal-title" id="exampleModalLabel">New message</h4>
+      	</div>
+      		<div class="modal-body">
+        		<div class="list_title">
+					<p><%= task.getTitle() %></p>
+				</div>
 
 				<div class="list_limit">
 					<p>期限: <%= task.getLimitYMD() %></p>
@@ -105,18 +101,22 @@
 				<div class="estimate_time">
 					<p>見積時間 60分</p>
 				</div>
-		      </div>
-     		 <div class="modal-footer">
-    		    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
- 		        <button type="button" class="btn btn-primary">Send message</button>
+
+      </div>
+      <div class="modal-footer" id="footer">
+      		<div id="footBtn">
       		</div>
-    		</div>
-  		</div>
-		</div>
+     		<input type="hidden" id="task_status_${task.getId()}" name="task_status_${task.getId()}" value="${task.getStatus()}" >
+      		<input type="button" value="編集" onClick="location.href='/FTAPJ/update.html?ID=${task.getId()}'">
+        	<!--  button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        	<button type="button" class="btn btn-primary">Send message</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
      <!-- モーダル部分終了  -->
 <% } %>
 </div>
-
-
 </body>
 </html>

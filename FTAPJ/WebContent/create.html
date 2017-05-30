@@ -2,16 +2,51 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<script  type="text/javascript" src="card.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<link rel="stylesheet" href="style.css" type="text/css"/>
 <script type="text/javascript" src="create.js"></script>
 <title>ToDo作成</title>
 </head>
 <body>
-	 <div><input id="title" type="text" name="title" value="Todoタイトル" required></div>
-	 <div><input id="description" type="text" name="description" value="詳細" ></div>
-	 <div><input id="submit" type="text" name="submit" value="提出先" ></div>
-	 <div><input id="limit" type="date" name="limit" required></div>
+<div class="container">
+	<div class="row">
+	 <div>
+	 <label for="title">
+	 TODOタイトル：
+	 </label>
+	 <input id="title" type="text" name="title" value="" required>
+	 </div>
+	 <div>
+	 <label for="title">
+	 概要：
+	 </label>
+	 <input id="description" type="text" name="description" value="" >
+	 </div>
+	 <div>
+	 <label for="title">
+	 提出先：
+	 </label>
+	 <input id="submit" type="text" name="submit" value="" >
+	 </div>
+	 <div>
+	 <label for="title">
+	 期限：
+	 </label>
+	 <input id="limit" type="date" name="limit" required>
+	 </div>
 	 <input id="submit_btn" type="submit" value="送信">
 	 <input type="reset" value="取消">
+	 </div>
+</div>
 </body>
 </html>
