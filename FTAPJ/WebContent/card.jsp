@@ -17,7 +17,13 @@
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 <script  type="text/javascript" src="card.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<link rel="stylesheet" href="style.css" type="text/css"/>
+
 <title>Insert title here</title>
+
 </head>
 <body>
 
@@ -30,76 +36,83 @@
 
 
 %>
-<div class="list_card">
-	<div class="list_title">
-		<p><%= task.getTitle() %></p>
-	</div>
 
-	<div class="list_limit">
-		<p>期限: <%= task.getLimitYMD() %></p>
-	</div>
+		<div class="list_card col-lg-3 col-md-3">
+		  <div class="list_content">
+			<div class="list_title">
+				<p><%= task.getTitle() %></p>
+			</div>
 
-	<div class="list_description">
-		<p><%= task.getDescription() %></p>
-	</div>
+			<div class="list_limit">
+				<p>期限: <%= task.getLimitYMD() %></p>
+			</div>
 
-	<div class="list_submission">
-		<p>提出先：task.getSubmit()</p>
-	</div>
+			<div class="list_description">
+				<p><%= task.getDescription() %></p>
+			</div>
 
-	<div class="work_time">
-		<p>作業時間： 10分</p>
-	</div>
+			<div class="list_submission">
+				<p>提出先：<%= task.getSubmit()%></p>
+			</div>
 
-	<div class="estimate_time">
-		<p>見積時間 60分</p>
-	</div>
+			<div class="work_time">
+				<p>作業時間： 10分</p>
+			</div>
 
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal_${task.getId()}" data-whatever="${task.getId()}">
-     タスク詳細
-     </button>
-     </div>
+			<div class="estimate_time">
+				<p>見積時間 60分</p>
+			</div>
+
+			<button type="button" class="btn detail_btn mdl-button mdl-js-button mdl-button--raised mdl-button--colored" data-toggle="modal" data-target="#exampleModal_${task.getId()}" data-whatever="${task.getId()}">
+		     タスク詳細
+		     </button>
+		  </div>
+		</div>
+
+
+
+
 
      <!-- モーダル部分 -->
      <div class="modal fade" id="exampleModal_${task.getId()}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="exampleModalLabel">New message</h4>
-      </div>
-      <div class="modal-body">
-        <div class="list_title">
-			<p><%= task.getTitle() %></p>
-		</div>
+  		<div class="modal-dialog">
+  		  <div class="modal-content">
+ 		     <div class="modal-header">
+ 	         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+ 	         <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+           </div>
+           <div class="modal-body">
+               <div class="list_title">
+			     <p><%= task.getTitle() %></p>
+		       </div>
 
-		<div class="list_limit">
-			<p>期限: <%= task.getLimitYMD() %></p>
-		</div>
+				<div class="list_limit">
+					<p>期限: <%= task.getLimitYMD() %></p>
+				</div>
 
-		<div class="list_description">
-			<p><%= task.getDescription() %></p>
-		</div>
+				<div class="list_description">
+					<p><%= task.getDescription() %></p>
+				</div>
 
-		<div class="list_submission">
-			<p>提出先：task.getSubmit()</p>
-		</div>
+				<div class="list_submission">
+					<p>提出先：<%=task.getSubmit()%></p>
+				</div>
 
-		<div class="work_time">
-			<p>作業時間： 10分</p>
-		</div>
+				<div class="work_time">
+					<p>作業時間： 10分</p>
+				</div>
 
-		<div class="estimate_time">
-			<p>見積時間 60分</p>
+				<div class="estimate_time">
+					<p>見積時間 60分</p>
+				</div>
+		      </div>
+     		 <div class="modal-footer">
+    		    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+ 		        <button type="button" class="btn btn-primary">Send message</button>
+      		</div>
+    		</div>
+  		</div>
 		</div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
-      </div>
-    </div>
-  </div>
-</div>
      <!-- モーダル部分終了  -->
 <% } %>
 </div>
