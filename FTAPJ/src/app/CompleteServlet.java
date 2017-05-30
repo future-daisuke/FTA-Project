@@ -6,7 +6,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,17 +21,22 @@ public class CompleteServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException {
 		System.out.println("post servlet in");
 		String taskId = request.getParameter("ID");
+		System.out.println(taskId);
 		String status = request.getParameter("status");
-		Date date = new Date();
+		System.out.println(status);
+//		Date date = new Date();
+//		System.out.println(date);
 		int st = Integer.parseInt(status);
+//		Calendar cal = Calendar.getInstance();	//現在日時を保持したカレンダー
+//		System.out.println(cal);
 		//セッションの取得
 //		HttpSession session = request.getSession(true);
 //		session.setAttribute("comId", taskId);
 		String sql;
 		if(st == 2){
-			sql = "update TR_TASK set status_kbn = '1' ,complete_ymd = "+  date +" where ID = '"+ taskId +"'";
+			sql = "update TR_TASK set status_kbn = '1' ,complete_ymd = sysdate where ID = '"+ taskId +"'";
 		}else{
-			sql = "update TR_TASK set status_kbn = '2' ,complete_ymd = "+  date +" where ID = '"+ taskId +"'";
+			sql = "update TR_TASK set status_kbn = '2' ,complete_ymd = sysdate where ID = '"+ taskId +"'";
 		}
 		try(
 			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "fta", "fta");

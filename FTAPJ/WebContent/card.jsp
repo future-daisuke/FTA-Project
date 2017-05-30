@@ -55,13 +55,13 @@
 		<p>見積時間 60分</p>
 	</div>
 
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal_${task.getId()}" data-whatever="${task.getId()}">
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="${task.getId()}">
      タスク詳細
      </button>
      </div>
 
      <!-- モーダル部分 -->
-     <div class="modal fade" id="exampleModal_${task.getId()}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -94,8 +94,9 @@
 		</div>
       </div>
       <div class="modal-footer" id="footer">
-     		<div id="task_id_${task.getId()}" class="${task.getStatus()}" >
+      		<div id="footBtn">
       		</div>
+     		<input type="hidden" id="task_status_${task.getId()}" name="task_status_${task.getId()}" value="${task.getStatus()}" >
       		<input type="button" value="編集" onClick="location.href='/FTAPJ/update.html?ID=${task.getId()}'">
         	<!--  button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         	<button type="button" class="btn btn-primary">Send message</button> -->

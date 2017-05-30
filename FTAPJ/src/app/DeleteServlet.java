@@ -6,7 +6,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,15 +23,15 @@ public class DeleteServlet extends HttpServlet{
 		String taskId = request.getParameter("ID");
 		String status = request.getParameter("status");
 		int st = Integer.parseInt(status);
-		Date date = new Date();
+//		Date date = new Date();
 		//セッションの取得
 //		HttpSession session = request.getSession(true);
 //		session.setAttribute("comId", taskId)
 		String sql;
 		if(st == 3){
-			sql = "update TR_TASK set status_kbn = '1' ,delete_ymd = "+  date +" where ID = '"+ taskId +"'";
+			sql = "update TR_TASK set status_kbn = '1' ,delete_ymd = sysdate where ID = '"+ taskId +"'";
 		}else{
-			sql = "update TR_TASK set status_kbn = '3' ,delete_ymd = "+  date +" where ID = '"+ taskId +"'";
+			sql = "update TR_TASK set status_kbn = '3' ,delete_ymd = sysdate where ID = '"+ taskId +"'";
 		}
 		try(
 			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "fta", "fta");
