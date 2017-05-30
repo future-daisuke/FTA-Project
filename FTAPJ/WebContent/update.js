@@ -26,10 +26,10 @@ function executeAjax() {
 			console.dir(json);
 
 			$('#updateTable').append(
-					'<tr><th>ToDoタイトル</th><td><input id="title" type="text" name="title" value="'+json.title+'" required></td>>/tr>'+
-					'<tr><th>詳細</td><td><input id="description" type="text" name="description" value="'+json.description+'"></td></tr>'+
-					'<tr><th>提出先</td><td><input id="submit" type="text" name="submit" value="'+json.submit+'"></td></tr>'+
-					'<tr><th>期限</td><td><input id="limit" type="date" name="limit" value="'+json.limitYMD+'" required></td></tr>'
+					'<div><label for="title">ToDoタイトル：</label><input id="title" class="form-control"  type="text" name="title" value="'+json.title+'" required></div>'+
+					'<div><label for="title">概要：</label><input id="description" class="form-control" type="text" name="description" value="'+json.description+'" ></div>'+
+					'<div><label for="title">提出先：</label><input id="submit" class="form-control" type="text" name="submit" value="'+json.submit+'" ></div>'+
+					'<div><label for="title">期限：</label><input id="limit"class="form-control"  type="date" name="limit" value="'+json.limitYMD+'" required></div>'
 			);
 		}
 

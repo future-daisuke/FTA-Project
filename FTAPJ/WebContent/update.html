@@ -2,17 +2,35 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<script  type="text/javascript" src="card.js"></script>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<link rel="stylesheet" href="style.css" type="text/css"/>
 <script type="text/javascript" src="update.js"></script>
 <title>ToDo編集</title>
 </head>
 <body>
 <div class="container">
 	<div class="row">
+	<br><br><br>
 		<!-- 編集情報入力用のtable -->
-		<table id="updateTable" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp"></table>
-		<input id="submit_btn" type="submit" value="送信">
-		<input type="reset" value="取消">
+		<div class="form-group">
+			<div id="updateTable">
+			</div>
+		 </div>
+		<div style="text-align:center;">
+		<input id="submit_btn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit" value="送信">
+		<input type="reset" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" value="取消">
+		</div>
 	</div>
 </div>
 </body>

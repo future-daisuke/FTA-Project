@@ -78,7 +78,7 @@
       	</div>
       		<div class="modal-body">
         		<div class="list_title">
-					<p><%= task.getTitle() %></p>
+					<p style="font-size:15px; font-weight: bold;"><%= task.getTitle() %></p>
 				</div>
 
 				<div class="list_limit">
