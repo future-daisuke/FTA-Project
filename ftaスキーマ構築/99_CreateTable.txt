@@ -23,6 +23,13 @@ insert into MS_KBN values ('1', '1', 'ñ¢äÆóπ');
 insert into MS_KBN values ('1', '2', 'äÆóπ');
 insert into MS_KBN values ('1', '3', 'çÌèú');
 
+CREATE TABLE ms_syain(
+	 SYAIN_ID                       VARCHAR(4 CHAR) PRIMARY KEY        /* îÑè„î‘çÜ */
+	,NAME                         VARCHAR(64 CHAR) not null       /* ìXCD */
+	,PASS                      VARCHAR(64 CHAR) not null       /* îÑè„ì˙ït */
+)
+;
+
 CREATE SEQUENCE seq_task
 MINVALUE 0
 START WITH 1;
